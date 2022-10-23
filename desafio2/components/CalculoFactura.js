@@ -43,12 +43,11 @@ const CalculoFactura = ({item,eliminarFactura}) => {
 
             <View>
                 <Text style={styles.label}>Total a pagar: </Text>
-                <Text style={styles.texto}>$ {item.cantidad>=15 && item.cantidad<=49 ? ((item.precio*item.cantidad)-(item.precio*item.cantidad)*0.05) :(item.precio*item.cantidad)}
-
-                {item.cantidad>=50 && item.cantidad<=79 ? ((item.precio*item.cantidad)-(item.precio*item.cantidad)*0.13) :(null)}
-
-                {item.cantidad>=80 ? ((item.precio*item.cantidad)-(item.precio*item.cantidad)*0.25) :(null)}
-
+                <Text style={styles.texto}>$ {item.cantidad>=15 && item.cantidad<=49 ? ((item.precio*item.cantidad)-(item.precio*item.cantidad)*0.05) :(
+                    item.cantidad>=50 && item.cantidad<=79 ? ((item.precio*item.cantidad)-(item.precio*item.cantidad)*0.13)  :(
+                        item.cantidad>=80 ? ((item.precio*item.cantidad)-(item.precio*item.cantidad)*0.25) :(item.precio*item.cantidad)
+                    )
+                )}
                 </Text>
             </View>
 
