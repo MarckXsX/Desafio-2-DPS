@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, Button, TouchableOpacity, Alert} from 'react-native'
 import React, {Component}from 'react'
 
 
@@ -40,25 +40,34 @@ export default class Calculadora extends Component {
       }
     }
 
-    if(operador1 == '!'){
-      while(parseFloat(valor)>1){
-        result= parseFloat(valor)*result
-        valor = parseFloat(valor)-1
+    try {
+      if(operador1 == '!'){
+        while(parseFloat(valor)>1){
+          result= parseFloat(valor)*result
+          valor = parseFloat(valor)-1
+        }
+        this.setState({
+          calculoText: result
+        })
       }
-      this.setState({
-        calculoText: result
-      })
+      else if(operador2 == '√'){
+        this.setState({
+          calculoText: Math.sqrt(valsqrt)
+        })
+      }
+      else{
+        this.setState({
+          calculoText: eval(text)
+        })
+      }      
+    } catch {
+      Alert.alert(
+        'Error', //titulo
+        'Datos erroneos', //mensaje
+        [{ text: 'OK' }] //Arreglo de botones
+    )   
     }
-    else if(operador2 == '√'){
-      this.setState({
-        calculoText: Math.sqrt(valsqrt)
-      })
-    }
-    else{
-      this.setState({
-        calculoText: eval(text)
-      })
-    }
+   
   }
 
   validaciones() {
