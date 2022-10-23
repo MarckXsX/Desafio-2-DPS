@@ -69,7 +69,7 @@ export default class Calculadora extends Component {
       case '*':
       case '/':
       case '√':
-      //case '!':
+      case '.':
         return false
     }
     return true
